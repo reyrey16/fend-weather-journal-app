@@ -23,5 +23,11 @@ app.use(express.static('website'));
 
 // Setup Server
 const port = 3000;
+const server = app.listen(port, ()=> {
+  console.log("Server is alive!! Port " + port)
+});
 
-const server = app.listen(port, ()=> console.log("Server is alive!! Port " + port));
+// Initialize all route with a callback function
+app.get('/get', (request, response)=> {
+  response.send(projectData);
+});
