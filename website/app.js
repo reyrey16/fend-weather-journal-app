@@ -6,6 +6,16 @@ const apiKey = '&appid=0a19a8d075a2222ed47edc7ea800379b&units=imperial';
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
+// Function to validate user enter data into zip and feelings
+function validateForm() {
+  const zip = document.getElementById('zip').value;
+  const feelings = document.getElementById('feelings').value;
+
+  if (zip == "" || feelings == ""){
+    return false;
+  }
+}
+
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', generateEntry);
 
@@ -39,7 +49,6 @@ const getWeather = async (baseURL, zip, apiKey) => {
 
 /* Function to POST data */
 const postData = async (url = '', data = {}) => {
-  console.log("DATA MADE IT HERE:", data);
   //Sending the data to the server side
   const response = await fetch(url, {
     method: 'POST',
@@ -65,12 +74,10 @@ const retrieveData = async () => {
  try {
  // Transform into JSON
  const allData = await request.json();
- console.log(allData);
  // Write updated data to DOM elements
  document.getElementById('date').innerHTML = newDate;
  document.getElementById('temp').innerHTML = Math.round(allData.temp) + ' degrees';
  document.getElementById('content').innerHTML = allData.feelings;
-
  }
  catch(error) {
    console.log('GET ERROR:', error);

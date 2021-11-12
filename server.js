@@ -29,14 +29,13 @@ const server = app.listen(port, () => {
 
 // Initialize all route with a callback function
 app.get('/all', (request, response) => {
-  console.log("GET requested");
   response.send(projectData.latestEntry);
+  console.log("GET request completed");
 });
 
 app.post('/', postEntry);
 
 function postEntry (request, response) {
   projectData.latestEntry = request.body;
-  console.log(projectData);
-  console.log("POST REQUEST DONE");
+  console.log("POST request completed");
 }
