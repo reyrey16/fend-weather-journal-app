@@ -29,7 +29,7 @@ function generateEntry(e) {
 
   //SECOND: Post data to the server
   .then((data) => {
-    postData('/', {temp:data.main.temp, zip: zip, feelings: feelings});
+    postData('/', {temp:data.main.temp, date:newDate, feelings: feelings});
   })
 
   .then(retrieveData);
@@ -75,7 +75,7 @@ const retrieveData = async () => {
  // Transform into JSON
  const allData = await request.json();
  // Write updated data to DOM elements
- document.getElementById('date').innerHTML = newDate;
+ document.getElementById('date').innerHTML = allData.date;
  document.getElementById('temp').innerHTML = Math.round(allData.temp) + ' degrees';
  document.getElementById('content').innerHTML = allData.feelings;
  }
