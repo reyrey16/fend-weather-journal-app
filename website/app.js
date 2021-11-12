@@ -14,11 +14,10 @@ function generateEntry(e) {
   const zip = document.getElementById('zip').value;
   const feelings = document.getElementById('feelings').value;
 
-  console.log("ZIP: " + zip);
-  console.log("Feelings: " + feelings);
-
-  getWeather(baseURL, zip, apiKey).then( (data) => {
-      console.log(data.main.temp);
+  //FIRST: Get weather data
+  getWeather(baseURL, zip, apiKey).then((data) => {
+      //SECOND: Post data to the server
+      postData('/', {temp:data.main.temp, zip: zip, feelings: feelings});
   })
 }
 
@@ -28,15 +27,32 @@ const getWeather = async (baseURL, zip, apiKey) => {
   const response = await fetch(baseURL+zip+apiKey)
   try {
     const data = await response.json();
-    //console.log(data.main.temp);
     return data;
   } catch (error) {
-    console.log("ERROR:", error);
+    console.log(" GET WEATHER ERROR:", error);
   }
 }
 
 /* Function to POST data */
+const postData = async (url = '', data = {}) => {
+  console.log("DATA MADE IT HERE:", data);
+  //Sending the data to the server side
+  const response = await fetch(url, {
+    method: 'POST',
+    credentials: 'same-origin',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  });
 
+  try {
+    const newData = await response.json();
+    return newData;
+  } catch (error) {
+    console.log("POST ERROR:", error);
+  }
+}
 
 
 /* Function to GET Project Data */
