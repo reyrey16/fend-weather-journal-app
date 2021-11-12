@@ -67,6 +67,7 @@ input{
 }
 
 button{
+    display:block;
     width: 400px;
     height: 100px;
     background: #3b4a6b;
@@ -74,6 +75,8 @@ button{
     font-family: 'Oswald', sans-serif;
     border: none;
     box-shadow: 2px 4px 5px #444;
+    font-size: 2em;
+    margin-top: 15px;
 }
 
 textarea{
