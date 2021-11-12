@@ -33,7 +33,7 @@ app.get('/all', (request, response) => {
   response.send(projectData);
 });
 
-app.post('/', postEntry);
+//app.post('/', postEntry);
 
 function postEntry (request, response) {
   let newData = request.body;
