@@ -23,11 +23,26 @@ app.use(express.static('website'));
 
 // Setup Server
 const port = 3000;
-const server = app.listen(port, ()=> {
-  console.log("Server is alive!! Port " + port)
+const server = app.listen(port, () => {
+  console.log("Server is alive!! Port " + port);
 });
 
 // Initialize all route with a callback function
-app.get('/get', (request, response)=> {
+app.get('/all', (request, response) => {
+  console.log("GET requested");
   response.send(projectData);
 });
+
+app.post('/', postEntry);
+
+function postEntry (request, response) {
+  let newData = request.body;
+  let newEntry = {
+    temperature : newData.temperature,
+    date : newData.date,
+    response : newData.response
+  }
+  console.log("POST REQUEST DONE");
+  response.send('POST received');
+  projectData.push(newEntry);
+}
