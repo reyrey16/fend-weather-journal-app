@@ -6,7 +6,7 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: 250px 175px 2fr 2fr;
+    grid-auto-rows: 250px 175px 500px 2fr;
     /* grid-template-columns:  */
     height:100vh;
     background: #f23557;
@@ -23,6 +23,9 @@ body{
 
 .entry{
     background: rgba(59, 74, 107, .4);
+    font-size: 1.5em;
+    height: 500px;
+    margin: 25px 0;
 }
 
 #entryHolder{
