@@ -6,16 +6,6 @@ const apiKey = '&appid=0a19a8d075a2222ed47edc7ea800379b&units=imperial';
 let d = new Date();
 let newDate = d.getMonth()+'.'+ d.getDate()+'.'+ d.getFullYear();
 
-// Function to validate user enter data into zip and feelings
-function validateForm() {
-  const zip = document.getElementById('zip').value;
-  const feelings = document.getElementById('feelings').value;
-
-  if (zip == "" || feelings == ""){
-    return false;
-  }
-}
-
 // Event listener to add function to existing HTML DOM element
 document.getElementById('generate').addEventListener('click', generateEntry);
 
