@@ -57,19 +57,17 @@ const postData = async (url = '', data = {}) => {
   }
 }
 
-
 /* Function to GET Project Data */
 const retrieveData = async () => {
  const request = await fetch('/all');
  try {
- // Transform into JSON
- const allData = await request.json();
- // Write updated data to DOM elements
- document.getElementById('date').innerHTML = allData.date;
- document.getElementById('temp').innerHTML = Math.round(allData.temp) + ' degrees';
- document.getElementById('content').innerHTML = allData.feelings;
- }
- catch(error) {
+   // Transform into JSON
+   const allData = await request.json();
+   // Write updated data to DOM elements
+   document.getElementById('date').innerHTML = allData.date;
+   document.getElementById('temp').innerHTML = Math.round(allData.temp) + ' degrees';
+   document.getElementById('content').innerHTML = allData.feelings;
+ } catch(error) {
    console.log('GET ERROR:', error);
  }
 }
