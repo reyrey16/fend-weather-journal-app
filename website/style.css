@@ -6,7 +6,7 @@ body{
 
 #app{
     display: grid;
-    grid-auto-rows: 250px 150px 2fr 2fr;
+    grid-auto-rows: 250px 175px 2fr 2fr;
     /* grid-template-columns:  */
     height:100vh;
     background: #f23557;
@@ -57,12 +57,13 @@ label{
 
 input{
     display:block;
-    height: 60px;
+    height: 75px;
     width: 320px;
     background:#22b2da;
     color: #f0d43a;
     font-family: 'Oswald', sans-serif;
     border: none;
+    font-size: 1.5em;
 }
 
 button{
