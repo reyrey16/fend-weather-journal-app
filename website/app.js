@@ -15,10 +15,14 @@ function generateEntry(e) {
   const feelings = document.getElementById('feelings').value;
 
   //FIRST: Get weather data
-  getWeather(baseURL, zip, apiKey).then((data) => {
-      //SECOND: Post data to the server
-      postData('/', {temp:data.main.temp, zip: zip, feelings: feelings});
+  getWeather(baseURL, zip, apiKey)
+
+  //SECOND: Post data to the server
+  .then((data) => {
+    postData('/', {temp:data.main.temp, zip: zip, feelings: feelings});
   })
+
+  .then(retrieveData);
 }
 
 /* Function to GET Web API Data*/
@@ -56,3 +60,19 @@ const postData = async (url = '', data = {}) => {
 
 
 /* Function to GET Project Data */
+const retrieveData = async () => {
+ const request = await fetch('/all');
+ try {
+ // Transform into JSON
+ const allData = await request.json();
+ console.log(allData);
+ // Write updated data to DOM elements
+ document.getElementById('date').innerHTML = newDate;
+ document.getElementById('temp').innerHTML = Math.round(allData.temp) + ' degrees';
+ document.getElementById('content').innerHTML = allData.feelings;
+
+ }
+ catch(error) {
+   console.log('GET ERROR:', error);
+ }
+}
