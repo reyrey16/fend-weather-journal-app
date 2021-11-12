@@ -12,9 +12,7 @@ body{
     grid-auto-rows: 150px 150px 400px 1fr;
     /* grid-template-columns:  */
     height:100vh;
-
     color: #f0d43a;
-    justify-content: center;
     grid-gap: 1em;
     font-size: 25px;
     margin: 0 5%;
@@ -29,6 +27,7 @@ body{
     font-size: 1.5em;
     height: 500px;
     margin: 25px 0;
+    padding: 10px;
 }
 
 #entryHolder{
